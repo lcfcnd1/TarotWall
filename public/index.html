@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TarotWall - Mensajes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Tarjeta flotante para enviar mensajes -->
+        <div class="floating-card">
+            <div class="card-content">
+                <input type="text" id="messageInput" placeholder="Escribe tu mensaje aquí..." maxlength="500">
+                <button id="sendButton" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lista de mensajes -->
+        <div class="messages-container" id="messagesContainer">
+            <div class="loading" id="loadingIndicator">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Cargando mensajes...</span>
+            </div>
+        </div>
+
+        <!-- Botón para cargar más mensajes -->
+        <div class="load-more-container">
+            <button id="loadMoreBtn" class="load-more-btn">
+                <i class="fas fa-chevron-up"></i>
+                Cargar mensajes anteriores
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
