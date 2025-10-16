@@ -1,5 +1,7 @@
 // Configuración del socket
-const socket = io();
+const socket = io({
+  path: '/tarotwall/socket.io/'
+});
 let isAdminMode = false;
 let currentOffset = 0;
 const messagesPerPage = 20;

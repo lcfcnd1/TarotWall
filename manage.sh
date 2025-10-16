@@ -82,12 +82,6 @@ start_app() {
     # Iniciar con PM2
     pm2 start "$SCRIPT_PATH" \
         --name "$APP_NAME" \
-        --log "$LOG_PATH/$APP_NAME.log" \
-        --error "$LOG_PATH/$APP_NAME-error.log" \
-        --out "$LOG_PATH/$APP_NAME-out.log" \
-        --time \
-        --watch \
-        --ignore-watch="node_modules logs *.db" \
         --restart-delay=1000 \
         --max-memory-restart=300M
     

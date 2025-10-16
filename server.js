@@ -11,13 +11,14 @@ const io = socketIo(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
-  }
+  },
+  path: '/tarotwall/socket.io/'
 });
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use('/tarotwall', express.static('public'));
 
 // Base de datos SQLite
 const db = new sqlite3.Database('messages.db');
@@ -137,12 +138,17 @@ io.on('connection', (socket) => {
   });
 });
 
-// Ruta principal
-app.get('/', (req, res) => {
+// Ruta principal para la subruta
+app.get('/tarotwall/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Redirigir sin barra final
+app.get('/tarotwall', (req, res) => {
+  res.redirect('/tarotwall/');
+});
+
 const PORT = process.env.PORT || 3003;
-server.listen(PORT, () => {
-  console.log(`Servidor ejecutándose en puerto ${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor ejecutándose en puerto ${PORT} en todas las interfaces`);
 });
